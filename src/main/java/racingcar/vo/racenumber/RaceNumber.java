@@ -4,8 +4,8 @@ public class RaceNumber {
 
     public static final String MSG_INVALID_NUMBER = "같은 이름의 차를 만들 수 없습니다.";
 
-    private static final int MIN = 0;
-    private static final int MAX = 9;
+    public static final int MIN = 0;
+    public static final int MAX = 9;
 
     private int number;
 
