@@ -2,7 +2,7 @@ package racingcar.vo.racenumber;
 
 import racingcar.common.error.ErrorMessage;
 
-public class RaceNumber {
+public class RaceNumber implements Comparable<RaceNumber> {
     public static final int MIN = 0;
     public static final int MAX = 9;
 
@@ -21,5 +21,10 @@ public class RaceNumber {
         if (this.number < MIN || this.number > MAX) {
             throw new IllegalArgumentException(ErrorMessage.MSG_INVALID_NUMBER.getMessage());
         }
+    }
+
+    @Override
+    public int compareTo(RaceNumber target) {
+        return number - target.number;
     }
 }
