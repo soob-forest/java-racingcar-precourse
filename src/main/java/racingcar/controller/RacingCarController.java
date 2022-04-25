@@ -6,9 +6,9 @@ import java.util.List;
 import racingcar.domain.car.Car;
 import racingcar.domain.cars.Cars;
 import racingcar.factory.CarsFactory;
-import racingcar.factory.RaceRandomNumberFactory;
 import racingcar.view.input.Input;
 import racingcar.view.output.Output;
+import racingcar.vo.racecount.RaceCount;
 
 public class RacingCarController {
     private Output outputView;
@@ -23,6 +23,7 @@ public class RacingCarController {
         try {
             Cars cars = participateCars();
             race(cars);
+            printCurrentSituation(cars);
             paradeWinningCars(cars);
         } catch (Exception exception) {
             outputView.printError(exception);
@@ -47,14 +48,11 @@ public class RacingCarController {
         outputView.enterTryNumber();
         int raceCount = inputView.enterTryNumber();
         outputView.runResultMessage();
-        for (int count = 0; count < raceCount; count++) {
-            move(cars);
-        }
+        cars.raceRepeat(RaceCount.from(raceCount));
     }
 
-    private void move(Cars cars) {
+    private void printCurrentSituation(Cars cars) {
         for (Car car : cars.getParticipatedCars()) {
-            car.move(RaceRandomNumberFactory.create());
             outputView.racingResult(car.getName().getName(), car.getDistance().getDistance());
         }
         outputView.racingResultDelimiter();
