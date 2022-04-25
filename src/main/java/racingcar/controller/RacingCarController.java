@@ -53,7 +53,7 @@ public class RacingCarController {
 
     private void printCurrentSituation(Cars cars) {
         for (Car car : cars.getParticipatedCars()) {
-            outputView.racingResult(car.getName().getName(), car.getDistance().getDistance());
+            outputView.racingResult(car.getName().getName(), car.getDistance().toInteger());
         }
         outputView.racingResultDelimiter();
     }

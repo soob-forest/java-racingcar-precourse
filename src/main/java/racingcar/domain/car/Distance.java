@@ -39,12 +39,12 @@ public class Distance implements Comparable<Distance> {
         return distance == that.distance;
     }
 
-    public int getDistance() {
+    public int toInteger() {
         return distance;
     }
 
     public void add(Distance target) {
-        distance = distance + target.getDistance();
+        distance = distance + target.toInteger();
     }
 
 }
