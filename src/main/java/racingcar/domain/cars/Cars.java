@@ -40,22 +40,33 @@ public class Cars {
 
     public List<Car> getWinningCars() {
 
+        Distance maxDistance = getMaxDistance();
+
+        return getWiningCars(maxDistance);
+    }
+
+    private List<Car> getWiningCars(Distance maxDistance) {
+        List<Car> winningCars = new ArrayList<>();
+
+        for (Car car : cars) {
+            addWiningCar(maxDistance, winningCars, car);
+        }
+        return Collections.unmodifiableList(new ArrayList<>(winningCars));
+    }
+
+    private void addWiningCar(Distance maxDistance, List<Car> winningCars, Car car) {
+        if (car.getDistance().equals(maxDistance)) {
+            winningCars.add(car);
+        }
+    }
+
+    private Distance getMaxDistance() {
         List<Distance> distances = new ArrayList<>();
         for (Car car : cars) {
             distances.add(car.getDistance());
         }
         distances.sort(Comparator.reverseOrder());
-
-        Distance maxDistance = distances.get(0);
-
-        List<Car> winningCars = new ArrayList<>();
-
-        for (Car car : cars) {
-            if (car.getDistance().equals(maxDistance)) {
-                winningCars.add(car);
-            }
-        }
-        return Collections.unmodifiableList(new ArrayList<>(winningCars));
+        return distances.get(0);
     }
 
     private void validateDuplicatedName(Car newCar) {
