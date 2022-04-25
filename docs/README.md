@@ -22,10 +22,15 @@
 
 - [x] 4 이상일 경우 전진하고, 3 이하의 경우 전진하지 않는다.
 
-#### Car.Number
+#### Car.Name
 
 - [x] 자동차의 이름은 5자 이하 이어야 한다.
 - [x] 이름이 공백 혹은 \n일 경우 에러를 발생시킨다
+
+#### Car.Distance
+
+- [x] 음수이면 에러를 발생시킨다.
+- [x] toInteger 구현
 
 #### Cars
 
@@ -38,6 +43,11 @@
 #### RaceNumber
 
 - [x] 1 - 9 사이의 숫자를 가진다.
+
+#### RaceCount
+
+- [x] 양수를 가진다
+- [x] toInteger 구현
 
 #### RaceNumberFactory
 
