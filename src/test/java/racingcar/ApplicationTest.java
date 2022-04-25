@@ -25,10 +25,30 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 이름에_대한_예외_처리() {
+    void 다섯글자_이름에_대한_예외_처리() {
         assertSimpleTest(
                 () -> {
                     runException("pobi,javaji");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 중복_이름에_대한_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    runException("pobi", "pobi");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 이동_수_음수_대한_예외_처리() {
+        assertSimpleTest(
+                () -> {
+                    run("pobi,woni", "-10");
                     assertThat(output()).contains(ERROR_MESSAGE);
                 }
         );
