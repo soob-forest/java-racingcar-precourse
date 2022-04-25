@@ -39,7 +39,7 @@ public class RacingCarController {
     private void paradeWinningCars(Cars cars) {
         List<String> winningCarName = new ArrayList<>();
         for (Car winningCar : cars.getWinningCars()) {
-            winningCarName.add(winningCar.getName().getName());
+            winningCarName.add(winningCar.getName().toString());
         }
         outputView.winningCars(winningCarName);
     }
@@ -53,7 +53,7 @@ public class RacingCarController {
 
     private void printCurrentSituation(Cars cars) {
         for (Car car : cars.getParticipatedCars()) {
-            outputView.racingResult(car.getName().getName(), car.getDistance().toInteger());
+            outputView.racingResult(car.getName().toString(), car.getDistance().toInteger());
         }
         outputView.racingResultDelimiter();
     }

@@ -10,14 +10,14 @@ public class Name {
     private Name(String name) {
         this.name = name;
         validate();
-
     }
 
     static public Name from(String name) {
         return new Name(name);
     }
 
-    public String getName() {
+    @Override
+    public String toString() {
         return name;
     }
 
