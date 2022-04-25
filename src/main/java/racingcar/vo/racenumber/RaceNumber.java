@@ -3,8 +3,8 @@ package racingcar.vo.racenumber;
 import racingcar.common.error.ErrorMessage;
 
 public class RaceNumber implements Comparable<RaceNumber> {
-    public static final int MIN = 0;
-    public static final int MAX = 9;
+    private static final int MIN = 0;
+    private static final int MAX = 9;
 
     private int number;
 
