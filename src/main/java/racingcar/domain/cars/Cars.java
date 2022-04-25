@@ -7,6 +7,8 @@ import java.util.List;
 import racingcar.common.error.ErrorMessage;
 import racingcar.domain.car.Car;
 import racingcar.domain.car.Distance;
+import racingcar.factory.RaceRandomNumberFactory;
+import racingcar.vo.racecount.RaceCount;
 
 public class Cars {
     private List<Car> cars;
@@ -18,6 +20,18 @@ public class Cars {
     public void participate(Car newCar) {
         validateDuplicatedName(newCar);
         cars.add(newCar);
+    }
+
+    public void raceRepeat(RaceCount raceCount) {
+        for (int count = 0; count < raceCount.toInteger(); count++) {
+            moveCars();
+        }
+    }
+
+    private void moveCars() {
+        for (Car car : cars) {
+            car.move(RaceRandomNumberFactory.create());
+        }
     }
 
     public List<Car> getParticipatedCars() {
